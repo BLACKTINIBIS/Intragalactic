@@ -11,10 +11,10 @@ pub struct Planetoid {
 
 impl Planetoid {
     //factory
-    pub fn new(name: &str) -> Planetoid {
+    pub fn new(prnt: &str, name: &str) -> Planetoid {
         Self {
             name: name.to_string(),
-            prnt: String::from(""),
+            prnt: prnt.to_string(),
             chld: Vec::new(),
             dpts: Vec::new(),
             rsrc: Vec::new(),
@@ -30,6 +30,8 @@ impl Planetoid {
     
     pub fn to_string(&self) -> String {
         let mut response = String::new();
+        response.push_str(&self.prnt);
+        response.push_str(" > ");
         response.push_str(&self.name);
         //TODO: add the rest of the stuff to to_string()
         response.clone()
