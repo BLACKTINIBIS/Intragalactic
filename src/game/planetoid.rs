@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 pub struct Planetoid {
-    name: String,
+    pub(crate) name: String,
     //Relationships
     prnt: String, //name as id
     chld: Vec<String>,
@@ -21,12 +21,14 @@ impl Planetoid {
         }
     }
     
-    //add child
-    pub fn add_chld(&mut self, chld: String) {
-        //TODO: add things here also stop writing todos when you're abt to sleep
+    pub fn link(&mut self, chld: Planetoid) {
+        
     }
+    
     //get children
-    pub fn get_chld(&self) -> &Vec<String> { &self.chld }
+    pub fn get_chld(&self, i: i32) -> &String { self.chld.get(i as usize).expect("Planetoid::getChild(i) has FAILED") }
+    pub fn get_prnt(&self) -> String { self.prnt.to_string() }
+    
     
     pub fn to_string(&self) -> String {
         let mut response = String::new();
