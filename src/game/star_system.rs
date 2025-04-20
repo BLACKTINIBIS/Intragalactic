@@ -17,9 +17,15 @@ impl StarSystem {
     }
 
     pub fn to_string(&self) -> String {
-        self.planetoids.iter().map(|(name, _)|
-            String::from(format!("\n{},",name))
-        ).collect()
+        //add own name
+        let mut r = String::from(format!("{}:",self.name));
+            
+        //add each planetoid
+        r.push_str(&self.planetoids.iter().map(|(name, _)|
+            String::from(format!("\n\t{},",name))
+        ).collect::<String>());
+        
+        r
     }
 }
 
