@@ -6,12 +6,14 @@ use crate::game::lang::random_name;
 use crate::game::planetoid::Planetoid;
 
 pub struct StarSystem {
+    name: String,
     planetoids: HashMap<String, Planetoid>,
 }
 
 impl StarSystem {
     pub fn new(name: &str) -> Self {
         Self {
+            name: name.to_string(),
             planetoids: generate_planetoids(name)
         }
     }
