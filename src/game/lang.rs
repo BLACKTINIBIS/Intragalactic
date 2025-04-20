@@ -30,7 +30,7 @@ pub fn random_name() -> String {
         let mut rng = rand::rng();
         let mut syllable: String = String::with_capacity(2);
         // maybe add a consonant ?
-        if roll_d6(2) > 6 { // regular
+        if roll_d20(1) > 5 { // regular
             let r_index = rng.random_range(0..cons.len());
             syllable += &cons[r_index..r_index+1];
         }
