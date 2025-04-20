@@ -7,7 +7,7 @@ use crate::game::maths::*;
 
 pub fn random_name() -> String {
     const MIN_SYLLABLE_COUNT: usize = 2; // INCLUSIVE
-    const MAX_SYLLABLE_COUNT: usize = 8; // INCLUSIVE
+    const MAX_SYLLABLE_COUNT: usize = 5; // INCLUSIVE
 
     let mut rng = rand::rng();
     // letter sets
