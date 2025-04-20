@@ -3,6 +3,7 @@ pub mod player;
 pub mod star_system;
 pub mod maths;
 pub mod lang;
+pub mod board;
 
 use crate::game::player::Player;
 
