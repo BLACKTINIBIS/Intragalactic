@@ -17,7 +17,9 @@ impl StarSystem {
     }
 
     pub fn to_string(&self) -> String {
-        self.planetoids.iter().map(|(name, _)| String::from(format!("\n{},",name))).collect()
+        self.planetoids.iter().map(|(name, _)| 
+            String::from(format!("\n{},",name))
+        ).collect()
     }
 }
 
