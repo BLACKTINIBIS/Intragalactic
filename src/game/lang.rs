@@ -3,6 +3,8 @@ use rayon::prelude::*;           // For ParallelIterator methods
 use rand::{rng, Rng};
 use std::time::Instant;
 
+use crate::game::maths::*;
+
 pub fn random_name() -> String {
     const MIN_SYLLABLE_COUNT: usize = 2; // INCLUSIVE
     const MAX_SYLLABLE_COUNT: usize = 8; // INCLUSIVE
@@ -49,24 +51,4 @@ pub fn random_name() -> String {
     //println!("{}",start.elapsed().as_nanos());  //timer
 
     name
-}
-
-fn roll_d6(n: i32) -> i32 {
-    let mut rng = rand::rng();
-    let mut total = 0;
-    for i in 0..n {
-        total += rng.random_range(1..=6);
-    }
-
-    total
-}
-
-fn roll_d20(n: i32) -> i32 {
-    let mut rng = rand::rng();
-    let mut total = 0;
-    for i in 0..n {
-        total += rng.random_range(1..=20);
-    }
-
-    total
 }

@@ -2,7 +2,7 @@
 use std::collections::HashMap;
 use rand::Rng;
 
-use crate::lang::random_name;
+use crate::game::lang::random_name;
 use crate::game::planetoid::Planetoid;
 
 pub struct StarSystem {
@@ -17,7 +17,7 @@ impl StarSystem {
     }
 
     pub fn to_string(&self) -> String {
-        self.planetoids.iter().map(|(name, _)| 
+        self.planetoids.iter().map(|(name, _)|
             String::from(format!("\n{},",name))
         ).collect()
     }
