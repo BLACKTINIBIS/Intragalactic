@@ -15,7 +15,7 @@ pub fn random_name() -> String {
     let vows = "aeiouy";
     let cons_spcy = "š§";       // genuinely spicy, don't use
     let vows_spcy = "œ°æª¸";    // same here too
-    let spcy = "'`- ";
+    let spcy = "'`-~";
     let mut name = String::with_capacity((MAX_SYLLABLE_COUNT/2) as usize);
 
     /* REFACTOR REFACTOR REFACTOR REFACTOR REFACTOR REFACTOR REFACTOR */
