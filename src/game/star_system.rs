@@ -28,7 +28,7 @@ pub fn generate_planetoids(sys_name: &str) -> HashMap<String, Planetoid> {
     //determine number of planets
     let num_planets = rng.random_range(0..=12);
     //begin pumping out num_planets planets.
-    let planetoids: HashMap<String,Planetoid> = (1..=num_planets).map(|x| {
+    let planetoids: HashMap<String,Planetoid> = (1..=num_planets).map(|_| {
         let name = random_name();
         let planet = Planetoid::new(&sys_name, &name);
         (name, planet)
