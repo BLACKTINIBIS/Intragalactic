@@ -12,6 +12,12 @@ pub struct StarSystem {
 
 impl StarSystem {
     pub fn new(name: &str) -> Self {
+        let mut rng = rand::rng();
+        
+        let name = name.to_string();
+        let price_mult = rng.random_range(-0.5..1.5) as f32;
+        let planetoids = generate_planetoids(&name);
+        
         Self {
             name: name.to_string(),
             planetoids: generate_planetoids(name)
