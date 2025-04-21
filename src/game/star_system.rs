@@ -1,12 +1,11 @@
-
 use std::collections::HashMap;
 use rand::Rng;
-
 use crate::game::lang::random_name;
 use crate::game::planetoid::Planetoid;
 
 pub struct StarSystem {
     name: String,
+    price_mult: f32,
     planetoids: HashMap<String, Planetoid>,
 }
 

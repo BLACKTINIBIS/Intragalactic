@@ -1,5 +1,3 @@
-
-
 use rand::*;
 use crate::game::star_system::*;
 use crate::game::lang::*;
@@ -10,7 +8,8 @@ const MAX_STAR_SYSTEMS: usize = 64;
 pub struct Board {
     systems: Vec<StarSystem>,
     resources: Vec<String>,
-    prices: Vec<i32>
+    prices: Vec<i32>,
+    inflation: f32
 }
 
 impl Board {

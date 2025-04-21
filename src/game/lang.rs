@@ -1,6 +1,4 @@
-use rand::{rng, Rng};
-use std::time::Instant;
-
+use rand::{Rng};
 use crate::game::maths::*;
 
 pub fn random_name() -> String {
@@ -11,10 +9,10 @@ pub fn random_name() -> String {
     // letter sets
     let cons = "bcdfghjklmnpqrst";
     let vows = "aeiouy";
-    let cons_spcy = "š§";       // genuinely spicy, don't use
-    let vows_spcy = "œ°æª¸";    // same here too
+    //let cons_spcy = "š§";       // genuinely spicy, don't use
+    //let vows_spcy = "œ°æª¸";    // same here too
     let spcy = "'`-~";
-    let mut name = String::with_capacity((MAX_SYLLABLE_COUNT/2) as usize);
+    let name;
 
     /* REFACTOR REFACTOR REFACTOR REFACTOR REFACTOR REFACTOR REFACTOR */
 
@@ -24,7 +22,7 @@ pub fn random_name() -> String {
     let syllable_count = rng.random_range(MIN_SYLLABLE_COUNT..=MAX_SYLLABLE_COUNT);
 
     //for each syllable
-    name = (0..syllable_count).map(|i| {
+    name = (0..syllable_count).map(|_| {
         let mut rng = rand::rng();
         let mut syllable: String = String::with_capacity(2);
         // maybe add a consonant ?
@@ -38,7 +36,7 @@ pub fn random_name() -> String {
         syllable += &vows[r_index..r_index+1];
 
         // maybe add some spicy ?
-        if(roll_d20(1) > 18){
+        if roll_d20(1) > 18 {
             let r_index = rng.random_range(0..spcy.len());
             syllable += &spcy[r_index..r_index+1];
         }
@@ -278,7 +276,7 @@ pub fn get_resources() -> Vec<String> {
         "Gadolinium Chloride",
         "Californium-252",
         "Deuterium Gas",
-        //Illicit Precursors Regulated in most jurisdictions)
+        //Illicit Precursors Regulated in most jurisdictions
         "Ergotamine Tartrate",
         "Lysergic Acid",
         "Phenyl-2-Propanone (P2P)",
@@ -290,12 +288,12 @@ pub fn get_resources() -> Vec<String> {
         "Carfentanil",
         "Soman Nerve Agent"
     ]);
-    
+
     let response = (0..slices.len()).map(|i|{
         let a = String::from(*slices.get(i).unwrap());
-        
+
         a
     }).collect::<Vec<String>>();
-    
+
     response
 }
