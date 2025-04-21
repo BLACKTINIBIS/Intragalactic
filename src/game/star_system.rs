@@ -19,8 +19,9 @@ impl StarSystem {
         let planetoids = generate_planetoids(&name);
         
         Self {
-            name: name.to_string(),
-            planetoids: generate_planetoids(name)
+            name,
+            price_mult,
+            planetoids,
         }
     }
 
