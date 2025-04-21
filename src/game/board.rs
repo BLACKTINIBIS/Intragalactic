@@ -1,28 +1,46 @@
+
+
 use rand::*;
 use crate::game::star_system::*;
 use crate::game::lang::*;
+use crate::game::maths::*;
 
 const MIN_STAR_SYSTEMS: usize = 56;
 const MAX_STAR_SYSTEMS: usize = 64;
 pub struct Board {
     systems: Vec<StarSystem>,
+    resources: Vec<String>,
+    prices: Vec<i32>
 }
 
-//commented out to shut up linter lol
 impl Board {
-    pub fn new() -> Board {
-        Board {
-            systems: generate_systems()
+    pub fn new() -> Self {
+        let systems = generate_systems();
+        let resources = get_resources();
+        let prices = get_prices(resources.len() as i32);
+        
+        Self {
+            systems,
+            resources,
+            prices
         }
     }
     
     pub fn to_string(&self) -> String {
         let n_sys = self.systems.len();
-        let response = (0..n_sys).map(|i| {
+        let mut response = String::from("Systems:\n");
+        response += &(0..n_sys).map(|i| {
             format!("\n{}",self.systems[i].to_string())
         }).collect::<String>();
+        response += "\nStonks:\n";
+        response += &(0..self.resources.len()).map(|i|{
+            let s = format!("\n{}: {}",self.resources[i], self.prices[i]);
+            
+            s
+        }).collect::<String>();
         
-        response
+        
+        String::from(response)
     }
 }
 
