@@ -23,7 +23,8 @@ impl Board {
         Self {
             systems,
             resources,
-            prices
+            prices,
+            inflation
         }
     }
     
