@@ -18,7 +18,8 @@ impl Board {
         let systems = generate_systems();
         let resources = get_resources();
         let prices = get_prices(resources.len() as i32);
-        
+        let inflation = random_range(1.0..=1.9);
+        println!("Board inflation: {}", inflation);
         Self {
             systems,
             resources,
