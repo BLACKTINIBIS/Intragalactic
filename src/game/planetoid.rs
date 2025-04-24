@@ -2,7 +2,7 @@
 pub struct Planetoid {
     pub(crate) name: String,
     //Relationships
-    prnt: String, //name as id
+    pub prnt: String, //name as id
     chld: Vec<String>,
     //stuff
     dpts: Vec<i32>,
@@ -21,13 +21,24 @@ impl Planetoid {
         }
     }
     
-    pub fn link(&mut self, chld: Planetoid) {
-        
+    pub fn clone(&self) -> Planetoid {
+        Planetoid {
+            name: self.name.clone(),
+            prnt: self.prnt.to_string(),
+            chld: self.chld.clone(),
+            dpts: self.dpts.clone(),
+            rsrc: self.rsrc.clone(),
+        }
     }
     
-    //get children
-    pub fn get_chld(&self, i: i32) -> &String { self.chld.get(i as usize).expect("Planetoid::getChild(i) has FAILED") }
-    pub fn get_prnt(&self) -> String { self.prnt.to_string() }
+    pub fn link(&mut self, chld: &mut Planetoid) {
+        self.chld.push(chld.to_string());
+        chld.set_parent(&self.name);
+    }
+    
+    pub fn set_parent(&mut self, name: &str) {
+        self.prnt = name.to_string();
+    }
     
     
     pub fn to_string(&self) -> String {
