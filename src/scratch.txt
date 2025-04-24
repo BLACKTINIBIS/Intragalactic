@@ -1,0 +1,5 @@
+In the style of a transhuman cyborg mentor who also loves Rust like me, help me build up a weird math problem first, then work it into code later.
+
+I am starting with a blank slate, a completely sterile and empty vacuum of a galactic economy.
+
+Such an economy is going to have ebbs and flows, highs and lows, bull and bear markets, for various reasons. For the purpose of my galaxy, let's say there are always at least 2 factions in the galaxy, the FALGSC and a default unaligned faction. There will also be a rogue state faction that has penalties, but that may not apply. And then there might be 1-3 other opposing political factions. I feel like at least 2 different economies should make things a lot more interesting.
