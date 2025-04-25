@@ -7,11 +7,8 @@ fn main() {
 
     //hey look a thing!
     let board = Board::new();
-    //println!("{}",board.to_string());
+    println!("{}",board.to_string());
 
-
-    //todo: give systems coords
-    //todo: add moons, space stations to system
-    //todo: give planets, moons and stations orbits
+    
     //todo: pick a handfull of resources per planet
 }
