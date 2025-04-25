@@ -5,6 +5,7 @@ pub mod maths;
 pub mod lang;
 pub mod board;
 mod scenario;
+mod faction;
 
 use crate::game::player::Player;
 

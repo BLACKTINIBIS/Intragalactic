@@ -7,7 +7,7 @@ fn main() {
 
     //hey look a thing!
     let board = Board::new();
-    println!("{}",board.to_string());
+    //println!("{}",board.to_string());
 
 
     //todo: give systems coords

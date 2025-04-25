@@ -16,21 +16,21 @@ use crate::game::maths::*;
 
 pub struct StarSystem {
     pub name: String,
-    pub price_mult: f32,
+    pub faction: i16,
+    pub coords: (i16, i16),
     pub planetoids: HashMap<String, Planetoid>,
 }
 
 impl StarSystem {
-    pub fn new(name: &str) -> Self {
+    pub fn new(name: &str, fac: i16, coords: (i16,i16)) -> Self {
         let mut rng = rand::rng();
-
         let name = name.to_string();
-        let price_mult = rng.random_range(-0.5..1.5) as f32;
         let planetoids = generate_planetoids(&name);
-
+        let faction = fac;
         Self {
             name,
-            price_mult,
+            faction,
+            coords,
             planetoids,
         }
     }
@@ -66,8 +66,6 @@ pub fn generate_planetoids(sys_name: &str) -> HashMap<String, Planetoid> {
         let name = get_space_name(sys_name, i,false);
         let planet = Planetoid::new(&sys_name, &name);
 
-        println!("{}",planet.name);
-
         (name, planet)
     }).collect::<HashMap<String,Planetoid>>();
 
@@ -77,8 +75,7 @@ pub fn generate_planetoids(sys_name: &str) -> HashMap<String, Planetoid> {
     //moon factory
     for i in 0..planet_names.len() {
         let planet_name = &planet_names[i];
-        let num_moons = rng.random_range(0..16);
-        println!("{}: {}",planet_name, num_moons);
+        let num_moons = rng.random_range(0..5);
         (1..=num_moons).for_each(|i| {
             let moon_name = get_space_name(planet_name,i,true);
             let mut moon: Planetoid = Planetoid::new(planet_name, &moon_name);
