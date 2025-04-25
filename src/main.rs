@@ -1,5 +1,4 @@
 mod game;
-mod finance;
 
 use crate::game::board::*;
 
@@ -9,6 +8,7 @@ fn main() {
     //hey look a thing!
     let board = Board::new();
     println!("{}",board.to_string());
+
 
     //todo: give systems coords
     //todo: add moons, space stations to system

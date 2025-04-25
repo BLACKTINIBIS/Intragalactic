@@ -49,13 +49,6 @@ pub fn random_name() -> String {
     capitalize(&name)
 }
 
-fn capitalize(s: &str) -> String {
-    let mut c = s.chars();
-    match c.next() {
-        None => String::new(),
-        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
-    }
-}
 
 pub fn get_resources() -> Vec<String> {
     let slices = Vec::from([
@@ -178,6 +171,7 @@ pub fn get_resources() -> Vec<String> {
         "Oganesson",
         "Katium",
          //Basic Chemicals & Reagents,
+        /*
          "Sulfuric Acid",
          "Hydrochloric Acid",
          "Nitric Acid",
@@ -286,7 +280,7 @@ pub fn get_resources() -> Vec<String> {
         "Alpha-Pyrrolidinopentiophenone (α-PVP)",
         "Fentanyl Citrate",
         "Carfentanil",
-        "Soman Nerve Agent"
+        "Soman Nerve Agent"*/
     ]);
 
     let response = (0..slices.len()).map(|i|{
@@ -296,4 +290,34 @@ pub fn get_resources() -> Vec<String> {
     }).collect::<Vec<String>>();
 
     response
+}
+
+pub fn desc_scenario(faction: String, board_state: String) -> String {
+    let mut response: String = String::new();
+    
+    //begin
+    let opt_begin = [
+        "What the fuck? ",
+        "Wow! ",
+        "Is it true? ",
+        "Everybody's saying it! ",
+        "The entire galaxy is buzzing about it! ",
+        "Stop the presses! ",
+        "You won't believe it! ",
+        "What they don't want you to know: ",
+        "The truth revealed: "
+    ];
+    
+    
+    //middle
+    
+    //end
+    response
+}
+fn capitalize(s: &str) -> String {
+    let mut c = s.chars();
+    match c.next() {
+        None => String::new(),
+        Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+    }
 }

@@ -4,7 +4,7 @@ pub mod star_system;
 pub mod maths;
 pub mod lang;
 pub mod board;
-mod stonk;
+mod scenario;
 
 use crate::game::player::Player;
 

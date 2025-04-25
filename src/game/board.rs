@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use rand::*;
 use crate::game::star_system::*;
 use crate::game::lang::*;
@@ -8,22 +9,18 @@ const MAX_STAR_SYSTEMS: usize = 64;
 pub struct Board {
     systems: Vec<StarSystem>,
     resources: Vec<String>,
-    prices: Vec<i32>,
-    inflation: f32
+    prices: HashMap<String,Vec<f64>>,
 }
 
 impl Board {
     pub fn new() -> Self {
         let systems = generate_systems();
         let resources = get_resources();
-        let prices = get_prices(resources.len() as i32);
-        let inflation = random_range(1.0..=1.9);
-        println!("Board inflation: {}", inflation);
+        let prices = get_prices(&resources);
         Self {
             systems,
             resources,
             prices,
-            inflation
         }
     }
     
@@ -35,7 +32,7 @@ impl Board {
         }).collect::<String>();
         response += "\nStonks:\n";
         response += &(0..self.resources.len()).map(|i|{
-            let s = format!("\n{}: {}",self.resources[i], self.prices[i]);
+            let s = format!("\n{}: {}",self.resources[i], self.prices.get(&self.resources[i]).unwrap().get(1).unwrap());
             
             s
         }).collect::<String>();
