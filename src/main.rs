@@ -9,6 +9,5 @@ fn main() {
     let board = Board::new();
     println!("{}",board.to_string());
 
-    
-    //todo: pick a handfull of resources per planet
+    //todo: make the debug print fn for star_system show the system connections and show resources!
 }

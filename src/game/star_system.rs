@@ -22,10 +22,10 @@ pub struct StarSystem {
 }
 
 impl StarSystem {
-    pub fn new(name: &str, fac: i16, coords: (i16,i16)) -> Self {
+    pub fn new(num_resources: i32, name: &str, fac: i16, coords: (i16,i16)) -> Self {
         let mut rng = rand::rng();
         let name = name.to_string();
-        let planetoids = generate_planetoids(&name);
+        let planetoids = generate_planetoids(&name, &num_resources);
         let faction = fac;
         Self {
             name,
@@ -42,7 +42,7 @@ impl StarSystem {
         //add each planetoid
         response.push_str(&self.planetoids.iter().map(|(name, planetoid)|{
             let mut spacer = String::from("");
-            if planetoid.prnt != self.name {
+            if planetoid.parent != self.name {
                 spacer = String::from("\t");
             }
             let s = String::from(format!("\n\t{spacer}{name}"));
@@ -55,7 +55,7 @@ impl StarSystem {
 }
 
 // RANDOM SYSTEM GENERATOR MACHINE
-pub fn generate_planetoids(sys_name: &str) -> HashMap<String, Planetoid> {
+pub fn generate_planetoids(sys_name: &str, num_resources: &i32) -> HashMap<String, Planetoid> {
     let mut rng = rand::rng();
 
     //determine number of planets
@@ -87,7 +87,22 @@ pub fn generate_planetoids(sys_name: &str) -> HashMap<String, Planetoid> {
             planetoids.insert(p.name.to_string(), p);
         });
     }
-
+    
+    //add resources to planetoids.
+    for i in 0..planet_names.len() {
+        let name = planet_names.get(i).unwrap(); //fetch name
+        let planetoid = planetoids.get(name).unwrap(); //fetch planetoid by name
+        let mut result = planetoids[name].clone(); //clone it to modify it
+        
+        let mut rng = rand::rng();
+        let num_rsrcs = rng.random_range(0..5);
+        let resources: Vec<i32> = (0..num_rsrcs).map(|_| {
+            rng.random_range(0..*num_resources)
+        }).collect::<Vec<i32>>();
+        result.add_resources(resources);
+        planetoids.insert(name.to_string(), result);
+    }
+    
     planetoids
 }
 

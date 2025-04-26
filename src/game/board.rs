@@ -20,7 +20,7 @@ pub struct Board {
 impl Board {
     pub fn new() -> Self {
         let resources = get_resources();
-        let systems = generate_systems();
+        let systems = generate_systems(resources.len() as i32);
         let factions = Faction::get_factions(&resources);
         Self {
             systems,
@@ -54,7 +54,7 @@ impl Board {
     }
 }
 
-fn generate_systems() -> Vec<StarSystem> {
+fn generate_systems(num_resources: i32) -> Vec<StarSystem> {
     let mut rng = rng();
     let mut systems: Vec<StarSystem> = Vec::new();
     let num_systems = rng.random_range(MIN_STAR_SYSTEMS..MAX_STAR_SYSTEMS);
@@ -63,7 +63,7 @@ fn generate_systems() -> Vec<StarSystem> {
         let pcnt: f64 = i as f64 / num_systems as f64;
         let (faction, x, y) = random_coords(pcnt);
         let name = random_name();
-        let sys = StarSystem::new(&name, faction, (x,y));
+        let sys = StarSystem::new(num_resources, &name, faction, (x,y));
 
         sys
     }).collect::<Vec<StarSystem>>();
